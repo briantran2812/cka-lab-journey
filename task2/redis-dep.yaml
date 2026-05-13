@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-dep
+  labels:
+   app: redis-task2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-task2
+  template:
+    metadata:
+      labels:
+        app: redis-task2
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-dep
+  labels:
+   app: redis-task2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-task2
+  template:
+    metadata:
+      labels:
+        app: redis-task2
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-dep
+  labels:
+   app: redis-task2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-task2
+  template:
+    metadata:
+      labels:
+        app: redis-task2
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
