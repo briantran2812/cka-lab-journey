@@ -1,0 +1,35 @@
+# ServiceAccount for frontend developer
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: frontend-developer
+  namespace: team-frontend
+---
+# Role: Only allow to get/list/watch pods in team-frontend
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+  namespace: team-frontend
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list"]
+---
+# RoleBinding: assign Role into ServiceAccount
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: frontend-developer-binding
+  namespace: team-frontend
+subjects:
+  - kind: ServiceAccount
+    name: frontend-developer
+    namespace: team-frontend
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
