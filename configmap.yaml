@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_ENV: "production"
+  APP_PORT: "8080"
+  LOG_LEVEL: "info"
+  nginx.conf: |
+    server {
+      listen 8080;
+      server_name localhost;
+      location / {
+        return 200 'Hello from Updated ConfigMap!\n';
+        add_header Content-Type text/plain;
+      }
+    }
