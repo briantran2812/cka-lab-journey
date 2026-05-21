@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: exam-ns
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exam-nginx
+  namespace: exam-ns
+  labels:
+    app: exam
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.27
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+

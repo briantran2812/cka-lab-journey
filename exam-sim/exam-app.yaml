@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exam-app
+  namespace: exam-ns
+spec:
+  containers:
+  - name: exam-app
+    image: nginx:1.27
+    envFrom:
+      - configMapRef:
+          name: exam-config
+      - secretRef:
+          name: exam-secret
